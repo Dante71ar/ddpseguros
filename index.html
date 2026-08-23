@@ -193,6 +193,11 @@ function enviarWhatsApp(event){
   if(mensaje) partes.push("Tema: "+mensaje);
   const url="https://wa.me/5493417473457?text="+encodeURIComponent(partes.join("\n"));
   window.open(url,"_blank","noopener");
+  if (typeof gtag === "function") {
+  gtag("event", "generate_lead", {
+    event_category: "formulario",
+    event_label: window.location.pathname
+  });
 }
 </script>
 </body>
