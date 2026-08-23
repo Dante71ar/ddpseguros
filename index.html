@@ -184,20 +184,27 @@
 <script>
 function enviarWhatsApp(event){
   event.preventDefault();
-  const nombre=document.getElementById("f-nombre").value.trim();
-  const contacto=document.getElementById("f-contacto").value.trim();
-  const mensaje=document.getElementById("f-mensaje").value.trim();
-  const partes=["Hola Dante, te escribo desde ddpseguros.com.ar para solicitar asesoramiento."];
-  if(nombre) partes.push("Nombre: "+nombre);
-  if(contacto) partes.push("Contacto: "+contacto);
-  if(mensaje) partes.push("Tema: "+mensaje);
-  const url="https://wa.me/5493417473457?text="+encodeURIComponent(partes.join("\n"));
-  window.open(url,"_blank","noopener");
+
+  const nombre = document.getElementById("f-nombre").value.trim();
+  const contacto = document.getElementById("f-contacto").value.trim();
+  const mensaje = document.getElementById("f-mensaje").value.trim();
+
+  const partes = ["Hola Dante, te escribo desde ddpseguros.com.ar para solicitar asesoramiento."];
+
+  if (nombre) partes.push("Nombre: " + nombre);
+  if (contacto) partes.push("Contacto: " + contacto);
+  if (mensaje) partes.push("Tema: " + mensaje);
+
+  const url = "https://wa.me/5493417473457?text=" + encodeURIComponent(partes.join("\n"));
+
   if (typeof gtag === "function") {
-  gtag("event", "generate_lead", {
-    event_category: "formulario",
-    event_label: window.location.pathname
-  });
+    gtag("event", "generate_lead", {
+      event_category: "formulario",
+      event_label: window.location.pathname
+    });
+  }
+
+  window.open(url, "_blank", "noopener");
 }
 </script>
 </body>
